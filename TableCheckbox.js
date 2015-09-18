@@ -242,18 +242,15 @@ var TableCheckbox = {
             for (var i = 0, size = $group.size(); i < size; i++) {
                 $oneEle = $group.eq(i);
                 content = TableCheckbox.getContent($oneEle);
-                if (TableCheckbox.checkAll) {
-                    if (typeof TableCheckbox.pool[content] === "undefined") {
-                        TableCheckbox.pick($oneEle);
-                    } else {
-                        TableCheckbox.dePick($oneEle);
-                    }
+                if (TableCheckbox.checkAll && typeof TableCheckbox.pool[content] === "undefined") {
+                    TableCheckbox.pick($oneEle);
                 } else {
-                    if (typeof TableCheckbox.pool[content] !== "undefined") {
-                        TableCheckbox.pick($oneEle);
-                    } else {
-                        TableCheckbox.dePick($oneEle);
-                    }
+                    TableCheckbox.dePick($oneEle);
+                }
+                if (!TableCheckbox.checkAll && typeof TableCheckbox.pool[content] !== "undefined") {
+                    TableCheckbox.pick($oneEle);
+                } else {
+                    TableCheckbox.dePick($oneEle);
                 }
             }
         }
