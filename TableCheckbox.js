@@ -24,10 +24,10 @@ var TableCheckbox = {
         } else {
             Fn = TableCheckbox.removeDisableCss;
         }
-        if (null != TableCheckbox.$allCheckbox) {
+        if (null !== TableCheckbox.$allCheckbox) {
             Fn.apply(this, TableCheckbox.$allCheckbox);
         }
-        if (null != TableCheckbox.$pageCheckbox) {
+        if (null !== TableCheckbox.$pageCheckbox) {
             Fn.apply(this, TableCheckbox.$pageCheckbox);
         }
         Fn.apply(this, [$(TableCheckbox.groupCheckbox)]);
@@ -35,12 +35,12 @@ var TableCheckbox = {
     },
     addDisableCss: function ($ele) {
         if (typeof $ele !== "undefined") {
-            $($ele).iCheck('disable')
+            $($ele).iCheck('disable');
         }
     },
     removeDisableCss: function ($ele) {
         if (typeof $ele !== "undefined") {
-            $($ele).iCheck('enable')
+            $($ele).iCheck('enable');
         }
     },
     init: function (params) {
@@ -115,7 +115,7 @@ var TableCheckbox = {
         return $($ele).prop('checked');
     },
     initICheck: function ($input) {
-        if (typeof $input !== "undefined" && $($input).size() != 0) {
+        if (typeof $input !== "undefined" && $($input).size() !== 0) {
             $($input).iCheck({
                 checkboxClass: 'icheckbox_square-pink',
                 radioClass: 'iradio_square-pink',
@@ -179,8 +179,8 @@ var TableCheckbox = {
         return this;
     },
     pushPool: function ($ele, arr) {
-        if (typeof $ele !== "undefined" || (typeof arr !== "undefined" && null != arr)) {
-            var arrIsNull = null == arr;
+        if (typeof $ele !== "undefined" || (typeof arr !== "undefined" && null !== arr)) {
+            var arrIsNull = null === arr;
             var size;
             if (arrIsNull) {
                 $ele = $($ele);
@@ -203,8 +203,8 @@ var TableCheckbox = {
         return this;
     },
     removePool: function ($ele, arr) {
-        if (typeof $ele !== "undefined" || (typeof arr !== "undefined" && null != arr)) {
-            var arrIsNull = null == arr;
+        if (typeof $ele !== "undefined" || (typeof arr !== "undefined" && null !== arr)) {
+            var arrIsNull = null === arr;
             var size;
             if (arrIsNull) {
                 $ele = $($ele);
@@ -254,16 +254,16 @@ var TableCheckbox = {
                 }
             }
         }
-        if (null != TableCheckbox.$pageCheckbox && $group.size() != 0) {
-            if ($(TableCheckbox.groupCheckbox + ":checked").size() == $group.size()) {
+        if (null !== TableCheckbox.$pageCheckbox && $group.size() !== 0) {
+            if ($(TableCheckbox.groupCheckbox + ":checked").size() === $group.size()) {
                 TableCheckbox.pick(TableCheckbox.$pageCheckbox);
             } else {
                 TableCheckbox.dePick(TableCheckbox.$pageCheckbox);
             }
         }
-        if (null != TableCheckbox.$allCheckbox) {
+        if (null !== TableCheckbox.$allCheckbox) {
             var poolLength = TableCheckbox.keys(TableCheckbox.pool).length;
-            if ((TableCheckbox.checkAll && poolLength == 0) || (!TableCheckbox.checkAll && poolLength >= TableCheckbox.totalElements)) {
+            if ((TableCheckbox.checkAll && poolLength === 0) || (!TableCheckbox.checkAll && poolLength >= TableCheckbox.totalElements)) {
                 TableCheckbox.pick(TableCheckbox.$allCheckbox);
             } else {
                 TableCheckbox.dePick(TableCheckbox.$allCheckbox);
@@ -309,7 +309,10 @@ var TableCheckbox = {
         var keys = [];
         if (typeof obj === "object") {
             for (var key in obj) {
-                keys.push(key)
+                if (obj.hasOwnProperty(key)) {
+                    keys.push(key);
+                }
+
             }
         }
         return keys;
