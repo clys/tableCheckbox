@@ -1,0 +1,110 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/docs.min.css">
+    <link rel="stylesheet" href="static/css/pink.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/icheck.min.js"></script>
+    <script type="text/javascript" src="../TableCheckbox.js"></script>
+    <script type="text/javascript" src="static/js/dome.js"></script>
+</head>
+<body>
+
+<div class="bs-docs-header" id="content" tabindex="-1">
+    <div class="container">
+        <h1>TableCheckbox</h1>
+
+        <p>用于tbody的Checkbox多选组件，具有全选功能</p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header"><a class="anchorjs-link " style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>使用方法</h1>
+            <h2>初始化:</h2>
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.init({
+    totalElements: 10,//一共有多少条数据
+    $allCheckbox: $('#table_all'),//全选按钮(可不写)
+    $pageCheckbox: $('#table_page'),//选择本页按钮(可不写)
+    $tbody: $('#black_list_container'),//tbody
+    groupCheckbox: 'tbody :checkbox'//勾选数据的元素的选择器(必须是包含在tbody下的元素)
+})</code></pre>
+            </div>
+
+            <h2>重置</h2>(可以给定新的数据总数，也可以不写参数)
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.reload(20)</code></pre>
+            </div>
+
+            <h2>重载勾选 参数</h2>(还原当前页勾选状态，重载样式)
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.reflection(true,true)</code></pre>
+            </div>
+
+            <h2>给定新的数据总数</h2>
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.setTotalElements(20)</code></pre>
+            </div>
+
+            <h2>返回选取的数据</h2>
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.get()//{"pool":[..,], "checkAll": boolean}</code></pre>
+            </div>
+            <span class="text-info bg-info">pool:数据(全选时是排除的，不是全选是选中的) checkAll:是否全选</span>
+
+            <h2>设置数据</h2>
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.set({"pool":[..,], "checkAll": boolean})</code></pre>
+            </div>
+            <span class="text-info bg-info">pool:数据(全选时是排除的，不是全选是选中的) checkAll:是否全选</span>
+
+            <h2>设置禁用,不写参数为切换是否禁用</h2>
+            <div class="highlight"><pre>
+                  <code>TableCheckbox.disable(true)</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header"><a class="anchorjs-link " style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>演示</h1>
+            <div class="highlight"><span id="show_data_1" style="word-break: break-all; word-wrap:break-word;"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">
+                        <span>
+                            <input id="page" type="checkbox">&nbsp;<label for="page">page</label>&nbsp;
+                            <input id="all" type="checkbox">&nbsp;<label for="all">all</label>
+                        </span>
+                    </th>
+                    <th width="50%">
+                        No.
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-link" id="prev">prev</button>
+            <span id="sp">N</span>/<span id="smp">N</span>
+            <button class="btn btn-link" id="next">next</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
