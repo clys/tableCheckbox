@@ -24,6 +24,11 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="page-header"><a class="anchorjs-link " style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>使用方法</h1>
+
+            依赖 <a href="https://github.com/fronteed/iCheck" target="_blank">iCheck</a><br>
+            默认使用方法是在需要Checkbox的父tr中写入 data-content=“xxx” 属性<br>
+            可在初始化的时候传入getContent:function(){}改变获取数据的行为(这个方法必须返回一个唯一的数据)<br>
+
             <h2>初始化:</h2>
             <div class="highlight"><pre>
                   <code>TableCheckbox.init({
