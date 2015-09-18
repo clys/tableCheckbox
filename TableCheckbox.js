@@ -116,7 +116,12 @@ var TableCheckbox = {
     },
     initICheck: function ($input) {
         if (typeof $input !== "undefined" && $($input).size() != 0) {
-            $($input).iCheck();
+            $($input).iCheck({
+                checkboxClass: 'icheckbox_square-pink',
+                radioClass: 'iradio_square-pink',
+                increaseArea: '20%' // optional
+            });
+
         }
         return this;
     },
@@ -260,7 +265,7 @@ var TableCheckbox = {
             }
         }
         if (null != TableCheckbox.$allCheckbox) {
-            var poolLength = _.keys(TableCheckbox.pool).length;
+            var poolLength = TableCheckbox.keys(TableCheckbox.pool).length;
             if ((TableCheckbox.checkAll && poolLength == 0) || (!TableCheckbox.checkAll && poolLength >= TableCheckbox.totalElements)) {
                 TableCheckbox.pick(TableCheckbox.$allCheckbox);
             } else {
@@ -283,7 +288,7 @@ var TableCheckbox = {
         return this;
     },
     get: function () {
-        return {"pool": _.keys(TableCheckbox.pool), "checkAll": TableCheckbox.checkAll};
+        return {"pool": TableCheckbox.keys(TableCheckbox.pool), "checkAll": TableCheckbox.checkAll};
     },
     set: function (params) {
         if (typeof params !== "undefined") {
@@ -302,5 +307,14 @@ var TableCheckbox = {
     },
     versions: function () {
         return TableCheckbox.ver;
+    },
+    keys: function (obj) {
+        var keys = [];
+        if (typeof obj === "object") {
+            for (var key in obj) {
+                keys.push(key)
+            }
+        }
+        return keys;
     }
 };
