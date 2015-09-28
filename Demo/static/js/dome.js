@@ -47,7 +47,7 @@ DomeWebController = {
             DomeWebController.table.build(DomeWebController.table.page, DomeWebController.table.size);
         },
         prev: function () {
-            if (DomeWebController.table.page == 1) {
+            if (DomeWebController.table.page === 1) {
                 return false;
             }
             DomeWebController.table.page--;
