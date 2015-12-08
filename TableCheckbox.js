@@ -1,5 +1,5 @@
 var TableCheckbox = {
-    ver: '0.1.2',
+    ver: '1.1',
     checkAll: false,
     pool: {},
     $allCheckbox: null,
@@ -180,7 +180,7 @@ var TableCheckbox = {
     },
     pushPool: function ($ele, arr) {
         if (typeof $ele !== "undefined" || (typeof arr !== "undefined" && null !== arr)) {
-            var arrIsNull = null === arr;
+            var arrIsNull = typeof arr === "undefined" || null === arr;
             var size;
             if (arrIsNull) {
                 $ele = $($ele);
@@ -204,7 +204,7 @@ var TableCheckbox = {
     },
     removePool: function ($ele, arr) {
         if (typeof $ele !== "undefined" || (typeof arr !== "undefined" && null !== arr)) {
-            var arrIsNull = null === arr;
+            var arrIsNull = typeof arr === "undefined" || null === arr;
             var size;
             if (arrIsNull) {
                 $ele = $($ele);
@@ -242,20 +242,23 @@ var TableCheckbox = {
             for (var i = 0, size = $group.size(); i < size; i++) {
                 $oneEle = $group.eq(i);
                 content = TableCheckbox.getContent($oneEle);
-                if (TableCheckbox.checkAll && typeof TableCheckbox.pool[content] === "undefined") {
-                    TableCheckbox.pick($oneEle);
+                if (TableCheckbox.checkAll) {
+                    if (typeof TableCheckbox.pool[content] === "undefined") {
+                        TableCheckbox.pick($oneEle);
+                    } else {
+                        TableCheckbox.dePick($oneEle);
+                    }
                 } else {
-                    TableCheckbox.dePick($oneEle);
-                }
-                if (!TableCheckbox.checkAll && typeof TableCheckbox.pool[content] !== "undefined") {
-                    TableCheckbox.pick($oneEle);
-                } else {
-                    TableCheckbox.dePick($oneEle);
+                    if (typeof TableCheckbox.pool[content] !== "undefined") {
+                        TableCheckbox.pick($oneEle);
+                    } else {
+                        TableCheckbox.dePick($oneEle);
+                    }
                 }
             }
         }
-        if (null !== TableCheckbox.$pageCheckbox && $group.size() !== 0) {
-            if ($(TableCheckbox.groupCheckbox + ":checked").size() === $group.size()) {
+        if (null != TableCheckbox.$pageCheckbox && $group.size() != 0) {
+            if ($(TableCheckbox.groupCheckbox + ":checked").size() == $group.size()) {
                 TableCheckbox.pick(TableCheckbox.$pageCheckbox);
             } else {
                 TableCheckbox.dePick(TableCheckbox.$pageCheckbox);
