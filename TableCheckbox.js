@@ -257,8 +257,8 @@ var TableCheckbox = {
                 }
             }
         }
-        if (null != TableCheckbox.$pageCheckbox && $group.size() != 0) {
-            if ($(TableCheckbox.groupCheckbox + ":checked").size() == $group.size()) {
+        if (null != TableCheckbox.$pageCheckbox) {
+            if ($group.size() != 0 && $(TableCheckbox.groupCheckbox + ":checked").size() == $group.size()) {
                 TableCheckbox.pick(TableCheckbox.$pageCheckbox);
             } else {
                 TableCheckbox.dePick(TableCheckbox.$pageCheckbox);
