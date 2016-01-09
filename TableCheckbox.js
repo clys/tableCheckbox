@@ -266,7 +266,7 @@ var TableCheckbox = {
         }
         if (null !== TableCheckbox.$allCheckbox) {
             var poolLength = TableCheckbox.keys(TableCheckbox.pool).length;
-            if ((TableCheckbox.checkAll && poolLength === 0) || (!TableCheckbox.checkAll && poolLength >= TableCheckbox.totalElements)) {
+            if ((TableCheckbox.checkAll && poolLength === 0) || (!TableCheckbox.checkAll && poolLength >= TableCheckbox.totalElements && TableCheckbox.totalElements > 0)) {
                 TableCheckbox.pick(TableCheckbox.$allCheckbox);
             } else {
                 TableCheckbox.dePick(TableCheckbox.$allCheckbox);
