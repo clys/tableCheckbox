@@ -191,7 +191,7 @@ var TableCheckbox = {
             var content;
             for (var i = 0; i < size; i++) {
                 if (arrIsNull) {
-                    content = TableCheckbox.getContent($ele.eq(i));
+                    content = TableCheckbox.getContent.apply($ele.eq(i),$ele.eq(i));
                 } else {
                     content = arr[i];
                 }
@@ -215,7 +215,7 @@ var TableCheckbox = {
             var content;
             for (var i = 0; i < size; i++) {
                 if (arrIsNull) {
-                    content = TableCheckbox.getContent($ele.eq(i));
+                    content = TableCheckbox.getContent.apply($ele.eq(i),$ele.eq(i));
                 } else {
                     content = arr[i];
                 }
@@ -241,7 +241,7 @@ var TableCheckbox = {
             var $oneEle;
             for (var i = 0, size = $group.size(); i < size; i++) {
                 $oneEle = $group.eq(i);
-                content = TableCheckbox.getContent($oneEle);
+                content = TableCheckbox.getContent.apply($oneEle,$oneEle);
                 if (TableCheckbox.checkAll) {
                     if (typeof TableCheckbox.pool[content] === "undefined") {
                         TableCheckbox.pick($oneEle);
