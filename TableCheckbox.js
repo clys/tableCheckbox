@@ -295,9 +295,7 @@ var TableCheckbox = {
             if (typeof params['pool'] !== "undefined") {
                 var pool = params['pool'];
                 TableCheckbox.clearPool();
-                for (var i = 0, len = pool.length; i < len; i++) {
-                    TableCheckbox.pushPool(null, pool[i]);
-                }
+                TableCheckbox.pushPool(null, pool);
             }
             if (typeof params['checkAll'] !== "undefined") {
                 TableCheckbox.checkAll = params['checkAll'];
